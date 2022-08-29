@@ -39,8 +39,7 @@ def extraction(line, k):
     return packet
 
 
-with open("E:/Mega/Università/Tirocinio/FeaturesExtractor/FormattedTraffic/totaltraffic.txt", 'r') as f, open(
-        "E:/Mega/Università/Tirocinio/FeaturesExtractor/FormattedTraffic/connection.txt", 'w') as f1:
+with open("totaltraffic.txt", 'r') as f, open("connection.txt", 'w') as f1:
     for line in f:
         k += 1
 

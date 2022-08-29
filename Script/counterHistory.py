@@ -40,7 +40,7 @@ def flag_check(packet):
         flag_ricevuti[3] += packet[-2] #ACK
         flag_ricevuti[5] += packet[-4] #RST
 
-with open('E:/Mega/Università/Tirocinio/FeaturesExtractor/FormattedTraffic/totaltraffic.txt', 'r') as f, open('E:/Mega/Università/Tirocinio/FeaturesExtractor/FormattedTraffic/countedtraffic.txt', 'w') as f1:
+with open('totaltraffic.txt', 'r') as f, open('ountedtraffic.txt', 'w') as f1:
     for line in f:
         packet = line.split(', ')
         k += 1

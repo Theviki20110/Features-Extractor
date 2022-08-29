@@ -56,10 +56,8 @@ def extraction(line, k, type):
     return packet
 
 
-with open("E:/Mega/Università/Tirocinio/FeaturesExtractor/FormattedTraffic/totaltraffic.txt", "r") as f, open(
-        "E:/Mega/Università/Tirocinio/FeaturesExtractor/FormattedTraffic/countedtraffic.txt", "r") as f1, open(
-    "E:/Mega/Università/Tirocinio/FeaturesExtractor/FormattedTraffic/connection.txt", "r") as f2, open(
-    "E:/Mega/Università/Tirocinio/FeaturesExtractor/FormattedTraffic/output.csv", "w") as o:
+with open("totaltraffic.txt", "r") as f, open("countedtraffic.txt", "r") as f1, open("connection.txt", "r") as f2, open(
+    "output.csv", "w") as o:
     filewriter = csv.writer(o, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(['IP_TYPE', 'IP_LEN', 'FR_LENGHT', 'IP_ID', 'IP_RESERVED', 'IP_DF', 'IP_MF', 'IP_OFFSET',
                          'IP_PROTO', 'IP_CHECKSUM', 'UDP_SPORT', 'UDP_DPORT', 'UDP_LEN', 'UDP_CHK', 'ICMP_TYPE',

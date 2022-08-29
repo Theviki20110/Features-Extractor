@@ -13,7 +13,63 @@
 Il traffico generato viene trattato in modo da essere indipendente dalla sessione simulata (ambiente virtuale).
 
 Alla fine si ottengono 50 features indipendenti dallo scenario ed utilizzabili per l'addestramento del modello.
-(Elenco 50 features)</p>
+<details>
+<summary>50 Features + Target:</summary>
+<ol>
+   <li>IP_TYPE</li>
+   <li>IP_LEN</li>
+   <li>FR_LENGHT</li>
+   <li>IP_ID</li>
+   <li>IP_RESERVED</li>
+   <li>IP_DF</li>
+   <li>IP_MF</li>
+   <li>IP_OFFSET</li>
+   <li>IP_PROTO</li>
+   <li>IP_CHECKSUM</li>
+   <li>UDP_SPORT</li>
+   <li>UDP_DPORT</li>
+   <li>UDP_LEN</li>
+   <li>UDP_CHK</li>
+   <li>ICMP_TYPE</li>
+   <li>ICMP_CODE</li>
+   <li>ICMP_CHK</li>
+   <li>TCP_SPORT</li>
+   <li>TCP_DPORT</li>
+   <li>TCP_SEQ</li>
+   <li>TCP_ACK</li>
+   <li>TCP_FFIN</li>
+   <li>TCP_FSYN</li>
+   <li>TCP_FRST</li>
+   <li>TCP_FPUSH</li>
+   <li>TCP_FACK</li>
+   <li>TCP_FURG</li>
+   <li>COUNT_FR_SRC_DST</li>
+   <li>COUNT_FR_DST_SRC</li>
+   <li>NUM_BYTES_SRC_DST</li>
+   <li>NUM_BYTES_DST_SRC</li>
+   <li>NUM_PUSHED_SRC_DST</li>
+   <li>NUM_PUSHED_DST_SRC</li>
+   <li>NUM_SYN_FIN_SRC_DST</li>
+   <li>NUM_SYN_FIN_DST_SRC</li>
+   <li>NUM_FIN_SRC_DST</li>
+   <li>NUM_FIN_DST_SRC</li>
+   <li>NUM_ACK_SRC_DST</li>
+   <li>NUM_ACK_DST_SRC</li>
+   <li>NUM_SYN_SRC_DST</li>
+   <li>NUM_SYN_DST_SRC</li>
+   <li>NUM_RST_SRC_DST</li>
+   <li>NUM_RST_DST_SRC</li>
+   <li>COUNT_SERV_SRC_DST</li>
+   <li>COUNT_SERV_DST_SRC</li>
+   <li>NUM_BYTES_SERV_SRC_DST</li>
+   <li>NUM_BYTES_SERV_DST_SRC</li>
+   <li>FIRST_PACKET</li>
+   <li>FIRST_SERV_PACKET</li>
+   <li>CONN_STATUS</li>
+   <li>TYPE</li>
+</ol>
+</details>
+</p>
 
 <br>
 
