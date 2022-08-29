@@ -82,15 +82,25 @@ Alla fine si ottengono 50 features indipendenti dallo scenario ed utilizzabili p
 <br>
 È possibile usare qualsiasi virtualizzatore l'importante è che le macchine client possano comunicare esclusivamente con il server.
 Il server è l'unico punto di accesso ad internet e si occupa di fornire connettività ai client.
+
+<br>
+
+Client e server implementano diversi tipi di servizi:
+![Services][services-screenshot]
+
+
 <br>
 
 Si può pensare di utilizzare per ogni macchina la seguente configuarazione in `\etc\network\interfaces`
 ```
+#Client1 configuration (dhcp or static)
 auto eth0
-iface eth0 inet dhcp #or static configuration
+iface eth0 inet dhcp
 
+#Default gateway
 post-up route add default gw 10.0.1.2
 ```
+
 
 ### Prerequisites
 Per la creazione del dataset si sfrutta la libreria nota _pandas_:
@@ -103,7 +113,9 @@ Per la creazione del dataset si sfrutta la libreria nota _pandas_:
 
 ## Usage
 
-Ad activation.py è necessario passare il numero di macchine client e i loro indirizzi.
+Ad activation.py è necessario passare prima la lista degli IP delle interfacce del Server e successivamente quella del Client.
+<br>
+<strong>L'ordine è importante.</strong>
 
 1. Clone the repo
    ```sh
@@ -111,13 +123,12 @@ Ad activation.py è necessario passare il numero di macchine client e i loro ind
    ```
 2. Launch the script:
    ```sh
-   sudo python3 activation.py
+   sudo python3 activation.py [IP_ser_int1, IP_ser_int2,...] [IP_client1_int, IP_client2_int,...]
    ```
-
-## Example
 
 [Python]: https://img.shields.io/badge/-python-yellow?style=for-the-badge&logo=python
 [python-url]: https://www.python.org/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIN-informational?style=for-the-badge&logo=linkedin
 [linkedin-url]: https://www.linkedin.com/in/vincenzo-lapadula-85a937164/
 [enviroment-screenshot]: res/image1.png
+[services-screenshot]: res/image2.png
