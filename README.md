@@ -3,6 +3,8 @@
  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 <h2 align='center'>Features-Extractor</h2>
+<h2 align='center'>!Work in progress!</h2>
+
 <p align='center'> Work inspired by E. Viegas, A. Santin and V. Abreu's paper:<br>"Enabling Anomaly-based Intrusion Detection Through Model Generalization". </p>
 
 <br>
@@ -82,10 +84,12 @@ Alla fine si ottengono 50 features indipendenti dallo scenario ed utilizzabili p
 <br>
 È possibile usare qualsiasi virtualizzatore l'importante è che le macchine client possano comunicare esclusivamente con il server.
 Il server è l'unico punto di accesso ad internet e si occupa di fornire connettività ai client.
-
 <br>
 
 Client e server implementano diversi tipi di servizi:
+
+<br>
+
 ![Services][services-screenshot]
 
 
@@ -125,6 +129,11 @@ Ad activation.py è necessario passare prima la lista degli IP delle interfacce 
    ```sh
    sudo python3 activation.py [IP_ser_int1, IP_ser_int2,...] [IP_client1_int, IP_client2_int,...]
    ```
+## License
+Distributed under the AGPL-3.0 License. See `LICENSE.txt` for more information.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 [Python]: https://img.shields.io/badge/-python-yellow?style=for-the-badge&logo=python
 [python-url]: https://www.python.org/
