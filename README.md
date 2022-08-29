@@ -105,6 +105,12 @@ iface eth0 inet dhcp
 post-up route add default gw 10.0.1.2
 ```
 
+Per rendere automatico il processo di acquisizione del traffico i client si sincronizzano con il server:
+
+![sync][sync-screenshot]
+<br>
+
+RUN.py è uno script che si occupa di creare uno dei 4 possibili tipi di traffico 
 
 ### Prerequisites
 Per la creazione del dataset si sfrutta la libreria nota _pandas_:
@@ -113,11 +119,19 @@ Per la creazione del dataset si sfrutta la libreria nota _pandas_:
   pip install pandas
   ```
 
+
+<br>
+
+Per utilizzare featuresExtractor è necessario convertire i pacchetti in array C.
+
+È possibile utilizzare Wireshark a tale scopo:
+![finaltraffic][finaltraffic-screenshot]
+
 <br>
 
 ## Usage
 
-Ad activation.py è necessario passare prima la lista degli IP delle interfacce del Server e successivamente quella del Client.
+Al featuresExtractor.py è necessario passare prima la lista degli IP delle interfacce del Server e successivamente quella del Client.
 <br>
 <strong>L'ordine è importante.</strong>
 
@@ -127,13 +141,11 @@ Ad activation.py è necessario passare prima la lista degli IP delle interfacce 
    ```
 2. Launch the script:
    ```sh
-   sudo python3 activation.py [IP_ser_int1, IP_ser_int2,...] [IP_client1_int, IP_client2_int,...]
+   sudo python3 featuresExtractor.py [IP_ser_int1, IP_ser_int2,...] [IP_client1_int, IP_client2_int,...]
    ```
+
 ## License
 Distributed under the AGPL-3.0 License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 [Python]: https://img.shields.io/badge/-python-yellow?style=for-the-badge&logo=python
 [python-url]: https://www.python.org/
@@ -141,3 +153,5 @@ Distributed under the AGPL-3.0 License. See `LICENSE.txt` for more information.
 [linkedin-url]: https://www.linkedin.com/in/vincenzo-lapadula-85a937164/
 [enviroment-screenshot]: res/image1.png
 [services-screenshot]: res/image2.png
+[sync-screenshot]: res/image3.png
+[finaltraffic-screenshot]: res/image4.png
