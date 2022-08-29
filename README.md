@@ -3,7 +3,7 @@
  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 <h2 align='center'>Features-Extractor</h2>
-<p align='center'> Programma Ispirato dal lavoro di E. Viegas, A. Santin e V. Abreu:<br>"Enabling Anomaly-based Intrusion Detection Through Model Generalization". </p>
+<p align='center'> Work inspired by E. Viegas, A. Santin and V. Abreu's paper:<br>"Enabling Anomaly-based Intrusion Detection Through Model Generalization". </p>
 
 <br>
 
