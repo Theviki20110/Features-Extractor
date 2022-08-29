@@ -132,8 +132,6 @@ Ad activation.py è necessario passare prima la lista degli IP delle interfacce 
 ## License
 Distributed under the AGPL-3.0 License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 [Python]: https://img.shields.io/badge/-python-yellow?style=for-the-badge&logo=python
 [python-url]: https://www.python.org/
