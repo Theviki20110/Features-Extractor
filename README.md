@@ -74,10 +74,25 @@ Alla fine si ottengono 50 features indipendenti dallo scenario ed utilizzabili p
 <br>
 
 ## Getting started
-Si presuppone la creazione dell'ambiente virtuale e del traffico che si vuole generare
+È necessario creare un ambiente virtuale come quello illustrato in figura:
+<br>
+
+![Enviroment][enviroment-screenshot]
+
+<br>
+È possibile usare qualsiasi virtualizzatore l'importante è che le macchine client possano comunicare esclusivamente con il server.
+Il server è l'unico punto di accesso ad internet e si occupa di fornire connettività ai client.
+<br>
+
+Si può pensare di utilizzare per ogni macchina la seguente configuarazione in `\etc\network\interfaces`
+```
+auto eth0
+iface eth0 inet dhcp #or static configuration
+
+post-up route add default gw 10.0.1.2
+```
 
 ### Prerequisites
-
 Per la creazione del dataset si sfrutta la libreria nota _pandas_:
   
   ```sh
@@ -99,9 +114,10 @@ Ad activation.py è necessario passare il numero di macchine client e i loro ind
    sudo python3 activation.py
    ```
 
-
+## Example
 
 [Python]: https://img.shields.io/badge/-python-yellow?style=for-the-badge&logo=python
 [python-url]: https://www.python.org/
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIN-informational?style=for-the-badge&logo=linkedin
 [linkedin-url]: https://www.linkedin.com/in/vincenzo-lapadula-85a937164/
+[enviroment-screenshot]: res/image1.png
