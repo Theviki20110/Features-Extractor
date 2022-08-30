@@ -2,8 +2,8 @@
  [![Python][Python]][python-url] 
  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-<h2 align='center'>Features-Extractor</h2>
-<h2 align='center'>!Work in progress!</h2>
+<h1 align='center'>Features-Extractor</h1>
+<h2 align='center'>!README in progress!</h2>
 
 <p align='center'> Work inspired by E. Viegas, A. Santin and V. Abreu's paper:<br>"Enabling Anomaly-based Intrusion Detection Through Model Generalization". </p>
 
@@ -11,10 +11,16 @@
 
 ## About the project
 
-<p>L'obiettivo è quello di ricreare un IDS (Intrusion Detection System) addestrando un modello di Machine Learning sulla base del traffico ricreato all'interno di un ambiente virtuale.
-Il traffico generato viene trattato in modo da essere indipendente dalla sessione simulata (ambiente virtuale).
+<p>L'obiettivo è quello di ricreare un IDS (Intrusion Detection System) addestrando un modello di Machine Learning sulla base del traffico ricreato all'interno di un ambiente virtuale. Il traffico generato è difficile da utilizzare per addestrare modelli di machine learning in quanto è dipendente dallo scenario in corso, quindi porterebbe a modelli addestrati per quello specifico scenario. Per risolvere questo problema è necessario trattare il traffico generato in modo da essere indipendente dalla sessione simulata (ambiente virtuale o reale).<br>
 
-Alla fine si ottengono 50 features indipendenti dallo scenario ed utilizzabili per l'addestramento del modello.
+## *Workflow*
+* Si ascolta il traffico generato (HTTP, SMTP, SMNP, SSH) mediante tcpdump; 
+* Si converte il file *.dump* generato in un file chiamato *totaltraffic.c* contente array C mediante wireshark;
+* Si lancia featuresextractor.py;
+* Alla fine si ottengono 50 features indipendenti dallo scenario ed utilizzabili per l'addestramento del modello.
+
+<br>
+  
 <details>
 <summary>50 Features + Target:</summary>
 <ol>
@@ -72,7 +78,13 @@ Alla fine si ottengono 50 features indipendenti dallo scenario ed utilizzabili p
 </ol>
 </details>
 </p>
+<br>
 
+*Nota*: SRC_DST e DST_SRC indicano il verso della trasmissione che sarà, rispettivamente, inviato e ricevuto.
+
+La variabile target può assumere due valori:
+*  Attack: se il pacchetto proviene dal client;
+*  Normal: se il pacchetto proviene dal server;
 <br>
 
 ## Getting started
@@ -84,6 +96,8 @@ Alla fine si ottengono 50 features indipendenti dallo scenario ed utilizzabili p
 <br>
 È possibile usare qualsiasi virtualizzatore l'importante è che le macchine client possano comunicare esclusivamente con il server.
 Il server è l'unico punto di accesso ad internet e si occupa di fornire connettività ai client.
+
+L'obiettivo è creare un ambiente il più isolato possibile.
 <br>
 
 Client e server implementano diversi tipi di servizi:
@@ -92,12 +106,13 @@ Client e server implementano diversi tipi di servizi:
 
 ![Services][services-screenshot]
 
-
+Per realizzare lo scenario descritto sono state utilizzate distribuzioni basate su Debian (ParrotOS e Kali Linux).
 <br>
 
-Si può pensare di utilizzare per ogni macchina la seguente configuarazione in `\etc\network\interfaces`
+Si può utilizzare per ogni client la seguente configuarazione in `\etc\network\interfaces`
 ```
 #Client1 configuration (dhcp or static)
+
 auto eth0
 iface eth0 inet dhcp
 
@@ -105,27 +120,47 @@ iface eth0 inet dhcp
 post-up route add default gw 10.0.1.2
 ```
 
-Per rendere automatico il processo di acquisizione del traffico i client si sincronizzano con il server:
+Per rendere automatico il processo di acquisizione del traffico i client sono stati sincronzzati con il server seguendo lo schema qui illustrato:
 
 ![sync][sync-screenshot]
 <br>
 
-RUN.py è uno script che si occupa di creare uno dei 4 possibili tipi di traffico 
+*Nota*: RUN.py è uno script che si occupa di lanciare uno dei 4 script illustrati e dopo un certo periodo fa partire sia l'attacco LOIC che SYNflood.
 
 ### Prerequisites
-Per la creazione del dataset si sfrutta la libreria nota _pandas_:
+* Per la creazione del dataset si sfrutta la libreria nota _pandas_:
   
   ```sh
   pip install pandas
   ```
 
+* Per generare l'attacco HTTPflood è necessario LOIC (scaricabile dal link: https://sourceforge.net/projects/loic/).
+
+Per utilizzarlo è possibile utilizzare _mono_:
+```sh
+   sudo apt install apt-transport-https dirmngr gnupg ca-certificates
+   sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+   echo "deb https://download.mono-project.com/repo/debian stable-buster main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+   sudo apt update
+   sudo apt install mono-devel
+```
+* Dalla cartella LOIC:
+  ```
+  sudo mono LOIC.exe
+  ```
+
+Per utilizzare featuresExtractor è necessario <strong>convertire i pacchetti in array C</strong>.
 
 <br>
 
-Per utilizzare featuresExtractor è necessario convertire i pacchetti in array C.
-
 È possibile utilizzare Wireshark a tale scopo:
+<br>
+
 ![finaltraffic][finaltraffic-screenshot]
+
+<br>
+
+Il file da ottenere deve avere la struttura illustrata, featuresextractor si occuperà di estrarre le informazioni e creare il dataset.
 
 <br>
 
@@ -143,6 +178,12 @@ Al featuresExtractor.py è necessario passare prima la lista degli IP delle inte
    ```sh
    sudo python3 featuresExtractor.py [IP_ser_int1, IP_ser_int2,...] [IP_client1_int, IP_client2_int,...]
    ```
+<br>
+
+## Example
+Qui è riportato un esempio per capire come utilizzare featuresextractor, i file utilizzati sono presenti nella cartella example.
+
+<br>
 
 ## License
 Distributed under the AGPL-3.0 License. See `LICENSE.txt` for more information.
