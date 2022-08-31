@@ -103,7 +103,7 @@ def icmp_packet(temp_traffic, n_line):
 
 temp_traffic = []
 n_line = 0
-with open("totaltraffic.c", "r") as f, open("totaltraffic.txt", "w") as f1:
+with open("totaltraffic.c", "r") as f, open("/tmp/totaltraffic.txt", "w") as f1:
     while True:
         # Read line
         line = f.readline()
@@ -165,8 +165,9 @@ with open("totaltraffic.c", "r") as f, open("totaltraffic.txt", "w") as f1:
                         print(temp_traffic)
 
                 except:
-                    print('Exception: ' + str(n_pack))
-                    print(Exception)
+                    print('Exception during extraction: ' + str(n_pack))
+                    if input('Press enter to ignore: ') != '\n':
+                        exit(1)
 
             if n_line == 2 and ip == 4:
                 Total_len = int(temp_traffic[1], base=16) + int(temp_traffic[0], base=16) * int(pow(16, 2))
@@ -219,8 +220,11 @@ with open("totaltraffic.c", "r") as f, open("totaltraffic.txt", "w") as f1:
                     data.append(Checksum)
                     data.append(Source_IP)
                 except:
+                    print("Error during checksum and Source_IP extraction")
                     print(temp_traffic)
                     print(n_pack)
+                    if input('Press enter to ignore: ') != '\n':
+                        exit(1)
 
                 """print('CHECKSUM: ' + str(Checksum))
                 print('SOURCE IP: ' + Source_IP)"""

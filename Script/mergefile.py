@@ -1,7 +1,7 @@
 import csv
-
-clients = ['10.0.1.3', '10.0.2.3', '10.0.3.3']
-servers = ['10.0.1.2', '10.0.2.2', '10.0.3.2']
+from featuresExtractor import getlist
+import sys
+servers, clients = getlist(sys.argv[1], sys.argv[2])
 k = 0
 data = []
 
@@ -26,8 +26,10 @@ def extraction(line, k, type):
             packet[3] = packet[3].split("'")[1]
 
     except:
+        print('Error during merging')
         print(packet)
-        input()
+        if input('Press enter to ignore: ') != '\n':
+            exit(1)
 
     limit = len(packet)
 
@@ -56,7 +58,7 @@ def extraction(line, k, type):
     return packet
 
 
-with open("totaltraffic.txt", "r") as f, open("countedtraffic.txt", "r") as f1, open("connection.txt", "r") as f2, open(
+with open("/tmp/totaltraffic.txt", "r") as f, open("/tmp/countedtraffic.txt", "r") as f1, open("/tmp/connection.txt", "r") as f2, open(
     "output.csv", "w") as o:
     filewriter = csv.writer(o, delimiter=',', quotechar='|', quoting=csv.QUOTE_MINIMAL)
     filewriter.writerow(['IP_TYPE', 'IP_LEN', 'FR_LENGHT', 'IP_ID', 'IP_RESERVED', 'IP_DF', 'IP_MF', 'IP_OFFSET',

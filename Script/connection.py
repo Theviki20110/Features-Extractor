@@ -1,5 +1,6 @@
-clients = ['10.0.1.3', '10.0.2.3', '10.0.3.3']
-servers = ['10.0.1.2', '10.0.2.2', '10.0.3.2']
+from featuresExtractor import getlist
+import sys
+servers, clients = getlist(sys.argv[1], sys.argv[2])
 
 first_packet = 0
 first_packet_serv = 0
@@ -23,9 +24,11 @@ def extraction(line, k):
         packet[8] = packet[8].split("'")[1]
         packet[10] = packet[10].split("'")[1]
     except:
-        print(packet)
-        input()
-
+        print("Error during packet reading")
+        print("packet" + str(packet))
+        if input('Press enter to ignore: ') != '\n':
+            exit(1)
+            
     for i in range(0, 28):
         if i == 0 or i == 8 or i == 10:
             continue
@@ -39,7 +42,7 @@ def extraction(line, k):
     return packet
 
 
-with open("totaltraffic.txt", 'r') as f, open("connection.txt", 'w') as f1:
+with open("totaltraffic.txt", 'r') as f, open("/tmp/connection.txt", 'w') as f1:
     for line in f:
         k += 1
 
@@ -81,7 +84,7 @@ with open("totaltraffic.txt", 'r') as f, open("connection.txt", 'w') as f1:
                     first_packet_serv = 1
 
         else:
-            print('Altro protocollo')
+            print('Other protocol')
 
         data.append(first_packet)
         data.append(first_packet_serv)

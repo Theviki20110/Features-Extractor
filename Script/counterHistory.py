@@ -1,5 +1,6 @@
-clients = ['10.0.1.3', '10.0.2.3', '10.0.3.3']
-servers = ['10.0.1.2', '10.0.2.2', '10.0.3.2']
+from featuresExtractor import getlist
+import sys
+servers, clients = getlist(sys.argv[1], sys.argv[2])
 
 data = []
 k = 0
@@ -40,7 +41,7 @@ def flag_check(packet):
         flag_ricevuti[3] += packet[-2] #ACK
         flag_ricevuti[5] += packet[-4] #RST
 
-with open('totaltraffic.txt', 'r') as f, open('ountedtraffic.txt', 'w') as f1:
+with open('totaltraffic.txt', 'r') as f, open('/tmp/countedtraffic.txt', 'w') as f1:
     for line in f:
         packet = line.split(', ')
         k += 1
@@ -51,10 +52,11 @@ with open('totaltraffic.txt', 'r') as f, open('ountedtraffic.txt', 'w') as f1:
             packet[8] = packet[8].split("'")[1]
             packet[10] = packet[10].split("'")[1]
         except:
-            print(k)
-            print(packet)
-            continue
-
+            print("Error during packet reading")
+            print("packet" + str(packet))
+            if input('Press enter to ignore: ') != '\n':
+                exit(1)
+            
         for i in range(0, 28):
             if i == 0 or i == 8 or i == 10:
                 continue
@@ -76,7 +78,7 @@ with open('totaltraffic.txt', 'r') as f, open('ountedtraffic.txt', 'w') as f1:
             frame_byte_server[2] += packet[2]
         else:
             print(k)
-            print('ALTRO IP TROVATO:' + packet[10])
+            print('OTHER IP FOUNDED:' + packet[10])
             continue
 
         flag_check(packet)
