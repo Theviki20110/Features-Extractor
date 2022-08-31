@@ -3,7 +3,6 @@
  [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 <h1 align='center'>Features-Extractor</h1>
-<h2 align='center'>!README in progress!</h2>
 
 <p align='center'> Work inspired by E. Viegas, A. Santin and V. Abreu's paper:<br>"Enabling Anomaly-based Intrusion Detection Through Model Generalization". </p>
 
@@ -183,6 +182,12 @@ Al featuresExtractor.py è necessario passare prima la lista degli IP delle inte
 ## Example
 Qui è riportato un esempio per capire come utilizzare featuresextractor.<br>
 I file utilizzati (scaricabili da example) devono essere presenti nella stessa cartella in cui viene lanciato lo scritp.
+* Prima di tutto si estrae il file:
+  ```sh
+  tar -xvf example.tar.gz
+  ```
+  
+* Si lancia lo script:
   ```sh
   sudo python featuresExtractor.py [10.0.1.2 10.0.2.2 10.0.3.2] [10.0.1.3 10.0.2.3 10.0.3.3]
   ```
