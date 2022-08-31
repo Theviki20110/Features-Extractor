@@ -109,7 +109,7 @@ Client e server implementano diversi tipi di servizi:
 Per realizzare lo scenario descritto sono state utilizzate distribuzioni basate su Debian (ParrotOS e Kali Linux).
 <br>
 
-Si può utilizzare per ogni client la seguente configuarazione in `\etc\network\interfaces`
+Si può utilizzare per ogni client la seguente configurazione in `\etc\network\interfaces`
 ```
 #Client1 configuration (dhcp or static)
 
@@ -146,12 +146,15 @@ Per utilizzarlo è possibile utilizzare _mono_:
 ```
 * Dalla cartella LOIC:
   ```
-  sudo mono LOIC.exe
+  sudo mono /src/bin/Debug/LOIC.exe
   ```
+* Per synflood si utilizzi la suite *metasploit*
+  
+  <br>
 
 Per utilizzare featuresExtractor è necessario <strong>convertire i pacchetti in array C</strong>.
 
-<br>
+
 
 È possibile utilizzare Wireshark a tale scopo:
 <br>
@@ -170,7 +173,7 @@ Al featuresExtractor.py è necessario passare prima la lista degli IP delle inte
 <br>
 <strong>L'ordine è importante.</strong>
 
-1. Clone the repo
+1. Clone the repo:
    ```sh
    git clone https://github.com/Theviki20110/Features-Extractor.git
    ```
