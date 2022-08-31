@@ -120,7 +120,6 @@ with open("totaltraffic.c", "r") as f, open("/tmp/totaltraffic.txt", "w") as f1:
 
                 f1.write(str(data))
                 f1.write('\n')
-                print(n_pack)
                 skip = 0
                 n_pack += 1
                 n_line = 0

@@ -1,4 +1,4 @@
-from featuresExtractor import getlist
+from Script.featuresExtractor import getlist
 import sys
 servers, clients = getlist(sys.argv[1], sys.argv[2])
 
@@ -14,7 +14,7 @@ k = 0
 
 def extraction(line, k):
     packet = line.split(', ')
-    print(packet)
+    #print(packet)
     if packet == ['[]\n']:
         return []
     try:

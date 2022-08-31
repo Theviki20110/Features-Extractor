@@ -1,4 +1,4 @@
-from featuresExtractor import getlist
+from Script.featuresExtractor import getlist
 import sys
 servers, clients = getlist(sys.argv[1], sys.argv[2])
 

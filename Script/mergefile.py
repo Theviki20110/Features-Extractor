@@ -1,5 +1,5 @@
 import csv
-from featuresExtractor import getlist
+from Script.featuresExtractor import getlist
 import sys
 servers, clients = getlist(sys.argv[1], sys.argv[2])
 k = 0
@@ -121,4 +121,4 @@ with open("/tmp/totaltraffic.txt", "r") as f, open("/tmp/countedtraffic.txt", "r
         data.append(packet2[0])
         filewriter.writerow(data)
         data = []
-        print(k)
+        #print(k)
