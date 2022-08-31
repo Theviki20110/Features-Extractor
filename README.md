@@ -192,7 +192,7 @@ I file utilizzati (scaricabili da example) devono essere presenti nella stessa c
   
 * Si lancia lo script:
   ```sh
-  sudo python featuresExtractor.py [10.0.1.2 10.0.2.2 10.0.3.2] [10.0.1.3 10.0.2.3 10.0.3.3]
+  sudo python featuresExtractor.py [10.0.1.2,10.0.2.2,10.0.3.2] [10.0.1.3,10.0.2.3,10.0.3.3]
   ```
 
 <br>
