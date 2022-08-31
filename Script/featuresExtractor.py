@@ -2,9 +2,6 @@ import sys
 import os
 import re
 
-#Remove Print
-
-
 
 def getlist(server_list, client_list):
     try:
@@ -14,7 +11,6 @@ def getlist(server_list, client_list):
         clients_l[0] = clients_l[0].split('[')[1]
         server_l[-1] = server_l[-1].split(']')[0]
         clients_l[-1] = clients_l[-1].split(']')[0]
-        print(server_l, clients_l)
     except:
         print('Input bad formatted')
         exit(1)
@@ -43,27 +39,27 @@ if len(sys.argv) != 3:
 servers, clients = getlist(sys.argv[1], sys.argv[2])
 #open extractor
 print("Start main features extraction")
-if os.system("python extractor.py " + str(servers) + " " + str(clients)):
+if os.system("python extractor.py"):
     print("Error during the extraction")
     exit(2)
 
 #open counterHistory
 print("Start counterHistory extraction")
-if os.system("python counterHistory.py " + str(servers) + " " + str(clients)):
+if os.system("python counterHistory.py " + sys.argv[1] + " " + sys.argv[2]):
     print("Error during counterHistory extraction")
     exit(3)
     
 #open connection
 print("Start connection extraction")
-if os.system("python connection.py " + str(servers) + " " + str(clients)):
+if os.system("python connection.py " + sys.argv[1] + " " + sys.argv[2]):
     print("Error during connection extraction")
     exit(4)
 
 #open mergefile
 print("Start merging output files")
-if os.system("python mergefile.py " + str(servers) + " " + str(clients)):
+if os.system("python mergefile.py " + sys.argv[1] + " " + sys.argv[2]):
     print("Error during merging files")
     exit(5)
 
 #delete tmp file
-os.system("rm totaltraffic.txt countedtraffic.txt connection.txt" + str(servers) + " " + str(clients))
+os.system("rm /tmp/totaltraffic.txt /tmp/countedtraffic.txt /tmp/connection.txt")
