@@ -4,8 +4,8 @@ import re
 
 def getlist(server_list, client_list):
     try:
-        server_l = server_list.split(' ')
-        clients_l = client_list.split(' ')
+        server_l = server_list.split(',')
+        clients_l = client_list.split(',')
         server_l[0] = server_list.split('[')[1]
         clients_l[0] = client_list.split('[')[1]
         server_l[-1] = server_list.split(']')[0]
