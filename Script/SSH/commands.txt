@@ -1,0 +1,21 @@
+ls
+ls -lA
+echo "HELLO"
+du
+pwd
+ls -lR
+history | grep 'cd'
+echo "How are you?"
+hostname
+date
+env
+history
+history | grep 'iptables'
+ls -lA | grep 'tcpdump'
+echo "Attack"
+du | tail
+du | head
+neofetch
+compgen -a
+ps
+pstree 
